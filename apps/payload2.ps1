@@ -34,7 +34,7 @@ icacls "C:\Users\Public\krnl" /grant:r "krnlrunner:(OI)(CI)F" "SYSTEM:(OI)(CI)F"
 
 
 Register-ScheduledTask -TaskName "WINschvostkrnl" `
-  -Action (New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c start schvostkrnl-debug.exe" -WorkingDirectory "C:\Users\Public\krnl") `
+  -Action (New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c start C:\Users\Public\krnl\schvostkrnl-debug.exe" -WorkingDirectory "C:\Users\Public\krnl") `
   -Trigger (New-ScheduledTaskTrigger -AtLogon) `
   -Principal (New-ScheduledTaskPrincipal -UserId "krnlrunner" -LogonType Password -RunLevel Highest) `
   -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopOnIdleEnd -StartWhenAvailable -ExecutionTimeLimit 0 -RestartInterval (New-TimeSpan -Minutes 1) -RestartCount 5) `
