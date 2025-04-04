@@ -1,1 +1,0 @@
-[BACKSPACE]7[SHIFT]_[SHIFT]A.txtA {HOLD}[ENTER]nechce[SPACE]to[SPACE]fungovat[ENTER]no[SPACE]nefungovalo[ENTER]no[ENTER]
