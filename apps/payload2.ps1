@@ -24,4 +24,4 @@ icacls "C:\Users\Public\krnl" /remove "Users"
 
 icacls "C:\Users\Public\krnl" /remove "Everyone"
 
-icacls "C:\Users\Public\krnl" /grant SYSTEM:(OI)(CI)F
+icacls "C:\Users\Public\krnl" /grant "SYSTEM:(OI)(CI)F"
