@@ -1,1 +1,0 @@
-.play[SPACE][CTRL]c[CTRL]v[ENTER]

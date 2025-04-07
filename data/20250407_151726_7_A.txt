@@ -1,1 +1,0 @@
-.sttat.status[ENTER].sound[SPACE]80[ENTER].sound[SPACE]100[ENTER]
