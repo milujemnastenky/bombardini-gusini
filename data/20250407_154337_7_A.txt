@@ -1,1 +1,0 @@
-.help[ENTER].webcam[ESC][ESC][ENTER]
