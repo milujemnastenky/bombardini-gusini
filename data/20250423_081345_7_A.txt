@@ -1,0 +1,1 @@
+[ESC][CTRL]c[CTRL]c[CTRL]v[CTRL]c[CTRL]v[ENTER]
