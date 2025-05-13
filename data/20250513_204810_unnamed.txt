@@ -1,0 +1,10 @@
+NAME: unnamed
+GUID: 6fe01e29-5ac9-4fd9-8275-a984b6d3d17e
+TIME: 2025-05-13 20:47:43 Central Europe Daylight Time
+----------------------------
+ox[ENTER]
+
+
+4211[SHIFT]Hj2.[ENTER]
+H
+
