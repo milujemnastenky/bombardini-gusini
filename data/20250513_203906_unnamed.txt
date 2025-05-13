@@ -1,0 +1,13 @@
+NAME: unnamed
+GUID: 6fe01e29-5ac9-4fd9-8275-a984b6d3d17e
+TIME: 2025-05-13 20:38:17 Central Europe Daylight Time
+----------------------------
+volam[SPACE]s[SPACE]kubem[ENTER]
+
+
+sa[SPACE]opytaj[SPACE]kuba[ENTER]
+
+
+ta[SPACE]nevim[ENTER]
+
+
