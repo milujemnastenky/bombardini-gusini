@@ -1,7 +1,0 @@
-NAME: unnamed
-GUID: 6fe01e29-5ac9-4fd9-8275-a984b6d3d17e
-TIME: 2025-05-13 20:37:13 Central Europe Daylight Time
-----------------------------
-nece[SPACE]sa[SPACE]mi[ENTER]
-
-

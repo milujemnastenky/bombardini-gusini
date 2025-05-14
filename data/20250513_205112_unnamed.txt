@@ -1,6 +1,0 @@
-NAME: unnamed
-GUID: 6fe01e29-5ac9-4fd9-8275-a984b6d3d17e
-TIME: 2025-05-13 20:50:50 Central Europe Daylight Time
-----------------------------
-[VOLUME UP]
-
