@@ -1,0 +1,1 @@
+[ESC]si[SPACE]kočka[ENTER]
