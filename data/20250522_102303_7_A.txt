@@ -1,0 +1,1 @@
+weather[SPACE]forecast[ENTER][SPACE][SPACE]
