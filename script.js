@@ -4,14 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
     
-    const repo = window.location.href.includes('github.io') 
-        ? window.location.pathname.split('/')[1] || '' 
-        : '';
-    const dataDir = 'data';
-    const apiUrl = `https://api.github.com/repos/${repo ? repo + '/' : ''}${repo ? '' : 'USERNAME/REPO'}/contents/${dataDir}?ref=main`;
+    // Get repository name for GitHub Pages
+    let repoPath = '';
+    if (window.location.host.includes('github.io')) {
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        if (pathParts.length > 0) {
+            repoPath = pathParts[0];
+        }
+    }
     
-    // Replace with your GitHub username and repository if not using GitHub Pages
-    // const apiUrl = 'https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/contents/data?ref=main';
+    // Construct API URL
+    const apiUrl = repoPath 
+        ? `https://api.github.com/repos/${repoPath}/contents/data?ref=main`
+        : 'https://api.github.com/repos/milujemnastenky/bombardini-gusini/contents/data?ref=main';
     
     // Display loading state
     fileList.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading files...</div>';
@@ -20,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Failed to fetch files');
+                throw new Error(`Failed to fetch files. Status: ${response.status}`);
             }
             return response.json();
         })
@@ -59,7 +64,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Fetch file content
                     fetch(file.download_url)
-                        .then(response => response.text())
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`Failed to load file. Status: ${response.status}`);
+                            }
+                            return response.text();
+                        })
                         .then(content => {
                             // Display file content with preserved whitespace
                             fileContent.innerHTML = `
@@ -116,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const k = 1024;
         const sizes = ['Bytes', 'KB', 'MB', 'GB'];
         const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
     
     // Helper function to escape HTML for display
