@@ -1,1 +1,0 @@
-[SHIFT]Taktiež[SPACE]tým,[SPACE]že[SPACE][DELETE]n[SPACE]vyrušuje[SPACE]pri[SPACE]práci[SPACE]spolužis[BACKSPACE]akov
