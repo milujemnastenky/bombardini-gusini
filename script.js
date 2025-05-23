@@ -4,19 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
     
-    // Get repository name for GitHub Pages
-    let repoPath = '';
-    if (window.location.host.includes('github.io')) {
-        const pathParts = window.location.pathname.split('/').filter(Boolean);
-        if (pathParts.length > 0) {
-            repoPath = pathParts[0];
-        }
-    }
+    // For GitHub Pages (username.github.io/repo-name)
+    // OR for custom domain with repository
+    const repoOwner = 'milujemnastenky';
+    const repoName = 'bombardini-gusini';
     
     // Construct API URL
-    const apiUrl = repoPath 
-        ? `https://api.github.com/repos/${repoPath}/contents/data?ref=main`
-        : 'https://api.github.com/repos/milujemnastenky/bombardini-gusini/contents/data?ref=main';
+    const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/data?ref=main`;
     
     // Display loading state
     fileList.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading files...</div>';
