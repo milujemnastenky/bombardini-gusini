@@ -139,6 +139,22 @@ header p {
     border-left: 3px solid var(--primary-color);
 }
 
+.file-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.file-header h2 {
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.file-header small {
+    color: var(--light-text);
+    font-size: 0.9em;
+}
+
 .loading {
     padding: 20px;
     text-align: center;
