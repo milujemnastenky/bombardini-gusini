@@ -5,9 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchButton = document.getElementById('searchButton');
     
     // For GitHub Pages (username.github.io/repo-name)
-    // OR for custom domain with repository
-    const repoOwner = 'milujemnastenky';
-    const repoName = 'bombardini-gusini';
+    const repoOwner = 'milujemnastenky'; // Your GitHub username
+    const repoName = 'bombardini-gusini'; // Your repository name
     
     // Construct API URL
     const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/data?ref=main`;
@@ -65,11 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             return response.text();
                         })
                         .then(content => {
-                            // Display file content with preserved whitespace
+                            // Display file content with just the size
                             fileContent.innerHTML = `
                                 <div class="file-header">
                                     <h2>${file.name}</h2>
-                                    <small>${formatBytes(file.size)} • Last updated: ${new Date(file.updated_at).toLocaleDateString()}</small>
+                                    <small>${formatBytes(file.size)}</small>
                                 </div>
                                 <pre class="file-text">${escapeHtml(content)}</pre>
                             `;
