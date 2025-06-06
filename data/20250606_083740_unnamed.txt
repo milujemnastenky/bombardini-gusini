@@ -1,0 +1,5 @@
+NAME: unnamed
+GUID: 379aa5f9-261d-4347-9a6b-4d7c1660d833
+TIME: 2025-06-06 08:36:40 Stredoeurópsky čas (letný)
+----------------------------
+[RIGHT SHIFT]Mne[SPACE]saM[SPACE]tá[SPACE]od[SPACE][RIGHT SHIFT][UP]BeB[BACKSPACE][RIGHT SHIFT]ne[SPACE]sa[SPACE]tá[SPACE]od[SPACE][RIGHT SHIFT]erovcov[SPACE]tiež[SPACE]páči.[SPACE]
